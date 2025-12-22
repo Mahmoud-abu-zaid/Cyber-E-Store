@@ -106,19 +106,16 @@ Cyber E-Store
 │  │  └─ auth
 │  │     ├─ login
 │  │     │  ├─ components
-│  │     │  │  └─ LoginForm.tsx
-│  │     │  ├─ services
-│  │     │  │  └─ loginServices.ts
-│  │     │  └─ types
-│  │     │     └─ loginTypes.ts
-│  │     └─ register
-│  │        ├─ components
-│  │        │  └─ RegisterForm.tsx
-│  │        ├─ services
-│  │        │  └─ registerServices.ts
-│  │        └─ types
-│  │           └─ registerTypes.ts
-│  │
+│  │     │  │  └─ login-form.tsx
+│  │     │  └─ services
+│  │     │     └─ loginServices.ts  
+│  │     ├─ register
+│  │     │   ├─ components
+│  │     │   │  └─ register-form.tsx
+│  │     │   ├─ services
+│  │     │   └─ registerServices.ts
+│  │     └─ types
+│  │         └─ formTypes.ts
 │  ├─ providers
 │  │  └─ Providers.tsx
 │  │
