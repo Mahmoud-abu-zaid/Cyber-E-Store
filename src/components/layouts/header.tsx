@@ -38,7 +38,7 @@ export default function Header() {
   }, [showMenu]);
 
   return (
-    <header className="container mx-auto py-3 px-7">
+    <header className="py-3 px-7 z-40 fixed top-0 left-0 right-0 bg-white">
       <nav className="flex justify-between lg:justify-center lg:gap-4 w-full items-center ">
         <div className="object-contain shrink-0">
           <Link href="/">
