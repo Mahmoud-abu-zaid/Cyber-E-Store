@@ -49,6 +49,7 @@
   --color-thread-bg: var(--thread-bg);
   --color-muted-text: var(--muted-text);
   --color-muted-input: var(--muted-input);
+  --color-blue: var(--blue);
 }
 
 :root {
@@ -91,6 +92,7 @@
   --thread-bg: oklch(0.96 0 0);
   --muted-text: oklch(0.78 0 0);
   --muted-input: oklch(50.676% 0.00006 271.152);
+  --blue: oklch(0.53 0.23 264.376);
 }
 
 .dark {
@@ -134,4 +136,15 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  box-shadow: 0 0 0px 1000px transparent inset;
+  -webkit-text-fill-color: inherit;
+  transition: background-color 9999s ease-in-out 0s;
 }
