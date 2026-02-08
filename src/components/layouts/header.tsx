@@ -71,7 +71,7 @@ export default function Header() {
             <Link href="/favorites">
               <PiShoppingCart />
             </Link>
-            <Link href="/favorites">
+            <Link href="/account">
               <GoPerson />
             </Link>
           </div>
@@ -110,7 +110,7 @@ export default function Header() {
             <Link href="/favorites" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
               <PiShoppingCart />
             </Link>
-            <Link href="/favorites" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
+            <Link href="/account" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
               <GoPerson />
             </Link>
           </div>
