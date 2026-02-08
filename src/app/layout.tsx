@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { Metadata } from "next";
 import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
+import Providers from "@/providers/providers";
 
 export const metadata: Metadata = {
   title: "Cyber E-Store",
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
