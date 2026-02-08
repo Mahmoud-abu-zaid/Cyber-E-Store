@@ -1,26 +1,53 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { CiMail } from "react-icons/ci";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
+import useLoginForm from "../hooks/use-login-form";
 import { RiLockPasswordLine } from "react-icons/ri";
 
 export default function LoginForm() {
+  const { handleSubmit, register, errors, onSubmit } = useLoginForm();
   return (
     <div className="container mx-auto grid md:grid-cols-2 grid-cols-1 p-5 justify-center items-center gap-10 pt-20">
       <div className="flex justify-center items-center">
-        <form className="lg:w-3/4 w-full">
+        <form className="lg:w-3/4 w-full" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="text-3xl font-semibold pb-6">Log In</h1>
           <div className="flex flex-col gap-4">
             <div className="flex items-center border border-border px-3 py-2 rounded gap-2.5">
               <CiMail className="text-xl text-gray-800" />
-              <input type="email" className="w-full outline-0" placeholder="Your email" />
+              <input
+                type="email"
+                className="w-full outline-0"
+                placeholder="Your email"
+                {...register("email", {
+                  required: "Email Is Required",
+                  pattern: {
+                    value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
+                    message: "Email Must Be Lowercase And Valid, Like example@domain.com",
+                  },
+                })}
+              />
             </div>
+            {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
 
             <div className="flex items-center border border-border px-3 py-2 rounded gap-2.5">
               <RiLockPasswordLine className="text-xl text-gray-800" />
-              <input type="password" className="w-full outline-0" placeholder="Password" />
+              <input
+                type="password"
+                className="w-full outline-0"
+                placeholder="Password"
+                {...register("password", {
+                  required: "Password Is Required",
+                  pattern: {
+                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                    message: "Password Must Be At Least 8 Characters Long And Include Uppercase, Lowercase, A Number, And One Special Character (@, $, !, %, *, ?, &).",
+                  },
+                })}
+              />
             </div>
+            {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
 
             <button type="submit" className="bg-black text-white rounded px-3 py-2 cursor-pointer">
               Log In
@@ -39,7 +66,7 @@ export default function LoginForm() {
               <FcGoogle className="text-2xl" />
               <span className="text-lg">Google</span>
             </button>
-            <button className="h-12 gap-3 text-sm font-medium border-2 w-1/2 flex items-center justify-center rounded-xl cursor-pointer">
+            <button type="submit" className="h-12 gap-3 text-sm font-medium border-2 w-1/2 flex items-center justify-center rounded-xl cursor-pointer">
               <FaFacebook className="text-blue text-2xl" />
               <span className="text-lg">Facebook</span>
             </button>{" "}
@@ -54,8 +81,9 @@ export default function LoginForm() {
           </div>
         </form>
       </div>
+
       <div className="relative hidden md:block">
-        <Image src="/img/login.webp" alt="Image Left" width={800} height={800} priority />
+        <Image src="/img/login.webp" alt="Minimal workspace with a chair and inspirational quote by Eleanor Roosevelt" width={800} height={800} priority />
         <div className="absolute top-6 w-full text-muted-input lg:text-2xl p-15 lg:pt-12 pt-8 flex flex-col font-semibold">
           <p className="mb-4">
             The future belongs to those who <span className="text-blue"> believe </span>in the <span className="text-blue"> beauty of their dreams.</span>
