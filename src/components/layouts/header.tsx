@@ -65,10 +65,10 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-4 text-xl ">
-            <Link href="/favorites">
+            <Link href="/">
               <SlHeart />
             </Link>
-            <Link href="/favorites">
+            <Link href="/">
               <PiShoppingCart />
             </Link>
             <Link href="/account">
@@ -104,10 +104,10 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-8 text-xl text-black ">
-            <Link className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]" href="/favorites">
+            <Link className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]" href="/">
               <SlHeart />
             </Link>
-            <Link href="/favorites" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
+            <Link href="/" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
               <PiShoppingCart />
             </Link>
             <Link href="/account" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
