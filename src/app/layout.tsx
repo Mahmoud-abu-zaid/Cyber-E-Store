@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
 import Providers from "@/providers/providers";
+import { AuthProvider } from "@/providers/auth-provider";
 
 export const metadata: Metadata = {
   title: "Cyber E-Store",
@@ -18,9 +19,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          <Header />
-          {children}
-          <Footer />
+          <AuthProvider>
+            <Header />
+            {children}
+            <Footer />
+          </AuthProvider>
         </Providers>
       </body>
     </html>
