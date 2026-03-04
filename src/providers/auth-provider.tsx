@@ -1,8 +1,8 @@
 "use client";
 
+import Loading from "@/app/loading";
 import { createClient } from "@/lib/supabase/client";
 import { createContext, useContext, useEffect, useState } from "react";
-import Loading from "@/app/loading";
 
 type AuthContextType = {
   isLoggedIn: boolean;
