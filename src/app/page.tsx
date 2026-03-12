@@ -1,9 +1,11 @@
-import HeroSectionVideo from "@/components/pages/hero-section";
+import HeroSectionVideo from "@/components/sections/hero-section";
+import FeaturedProducts from "@/components/sections/featured-products";
 
 export default function Home() {
   return (
-    <div >
+    <div className="2xl:container 2xl:mx-auto">
       <HeroSectionVideo />
+      <FeaturedProducts />
     </div>
   );
 }
