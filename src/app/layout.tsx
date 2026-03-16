@@ -4,6 +4,7 @@ import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
 import Providers from "@/providers/providers";
 import { AuthProvider } from "@/providers/auth-provider";
+import OfflineWrapper from "@/providers/offline-wrapper";
 
 export const metadata: Metadata = {
   title: "Cyber E-Store",
@@ -19,11 +20,13 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
+         <OfflineWrapper>
           <AuthProvider>
             <Header />
             {children}
             <Footer />
           </AuthProvider>
+         </OfflineWrapper>
         </Providers>
       </body>
     </html>
