@@ -11,7 +11,7 @@ export default function FeaturedProducts() {
           <Image src="/img/PlayStation (2).webp" alt="PlayStation" width={300} height={300} className="block lg:hidden w-48 lg:w-72" priority />
           <div>
             <h2 className="text-3xl lg:text-4xl font-medium mb-3">Playstation 5</h2>
-            <p className="text-muted-foreground max-w-md">Incredibly powerful CPUs, GPUs, and an SSD with integrated I/O will redefine your PlayStation experience.</p>
+            <p className="text-muted-foreground max-w-md px-2">Incredibly powerful CPUs, GPUs, and an SSD with integrated I/O will redefine your PlayStation experience.</p>
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 ">
