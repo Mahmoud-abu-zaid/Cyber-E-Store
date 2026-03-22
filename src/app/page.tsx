@@ -1,6 +1,6 @@
+import Category from "@/components/sections/category";
 import HeroSectionVideo from "@/components/sections/hero-section";
 import FeaturedProducts from "@/components/sections/featured-products";
-import Category from "@/components/sections/category";
 
 export default function Home() {
   return (
