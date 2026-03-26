@@ -18,7 +18,7 @@ const categories = [
 
 export default function Category() {
   return (
-    <section className="container mx-auto py-12 px-3">
+    <section className="w-full lg:container lg:mx-auto py-12 px-3">
       <div className="mb-6">
         <h2 className="text-3xl font-semibold">Browse by Category</h2>
         <p className="text-muted-foreground mt-2">Find what you’re looking for</p>
