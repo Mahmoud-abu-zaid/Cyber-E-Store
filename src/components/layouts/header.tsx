@@ -105,7 +105,7 @@ export default function Header() {
       </nav>
 
       {showMenu && (
-        <div className="absolute right-0 left-0 top-16 bg-white lg:hidden p-3 flex flex-col gap-3 shadow-xl items-center">
+        <div className="absolute right-0 left-0 top-15 bg-white lg:hidden p-3 flex flex-col gap-3 shadow-xl items-center">
           <ul className="flex items-center flex-col gap-2 font-medium w-full">
             {navLinks.map((link) => {
               if (isLoggedIn && link.name === "Sign up") return null;
@@ -142,7 +142,7 @@ export default function Header() {
               <GoPerson />
             </Link>
 
-            <button onClick={handleLogout} className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5] text-red-500">
+            <button onClick={handleLogout} className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5] text-red-500 cursor-pointer">
               <CiLogout />
             </button>
           </div>
