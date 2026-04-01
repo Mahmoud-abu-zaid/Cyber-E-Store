@@ -15,9 +15,9 @@ export default function FeaturedProducts() {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 ">
-          <div className="bg-gray-100 flex flex-col lg:flex-row items-center lg:text-left gap-4 py-3">
-            <Image src="/img/AirPods Max 2.webp" alt="AirPods Max" width={100} height={100} className="hidden lg:block w-25"/>
-            <Image src="/img/AirPods Max1.webp" alt="AirPods Max" width={450} height={400} className="block lg:hidden w-25" />
+          <div className="bg-gray-100 flex flex-col lg:flex-row items-center justify-center lg:text-left gap-4 py-3 h-70 md:h-70">
+            <Image src="/img/AirPods Max 2.webp" alt="AirPods Max" width={100} height={100} className="hidden lg:block w-25" />
+            <Image src="/img/AirPods Max1.webp" alt="AirPods Max" width={450} height={400} className="block lg:hidden w-35" />
             <div>
               <h2 className="text-2xl flex flex-row lg:flex-col gap-1.5 justify-center">
                 <span> Apple </span>
@@ -28,9 +28,9 @@ export default function FeaturedProducts() {
             </div>
           </div>
 
-          <div className="bg-main-bg text-white flex flex-col lg:flex-row items-center lg:text-left text-center gap-4 py-3">
+          <div className="bg-main-bg text-white flex flex-col lg:flex-row items-center justify-center lg:text-left text-center gap-4 py-3 h-70 md:h-70">
             <Image src="/img/Apple Vision Pro 2.webp" alt="Apple Vision Pro" width={350} height={350} className="hidden lg:block w-55" />
-            <Image src="/img/Apple Vision Pro 1.webp" alt="Apple Vision Pro" width={450} height={450} className="block lg:hidden w-45" />
+            <Image src="/img/Apple Vision Pro 1.webp" alt="Apple Vision Pro" width={450} height={450} className="block lg:hidden w-55" />
             <div>
               <h2 className="text-2xl">
                 Apple <br className="hidden lg:flex" /> Vision
