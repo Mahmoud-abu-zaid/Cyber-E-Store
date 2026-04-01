@@ -1,4 +1,5 @@
 import Category from "@/components/sections/category";
+import BestSellers from "@/components/sections/best-sellers";
 import HeroSectionVideo from "@/components/sections/hero-section";
 import FeaturedProducts from "@/components/sections/featured-products";
 import DiscoverProducts from "@/modules/discover-products/discover-products";
@@ -10,6 +11,7 @@ export default function Home() {
       <FeaturedProducts />
       <Category />
       <DiscoverProducts />
+      <BestSellers/>
     </div>
   );
 }
