@@ -3,6 +3,7 @@ import BestSellers from "@/components/sections/best-sellers";
 import HeroSectionVideo from "@/components/sections/hero-section";
 import FeaturedProducts from "@/components/sections/featured-products";
 import DiscoverProducts from "@/modules/discover-products/discover-products";
+import SummerSale from "@/components/sections/summer-sale";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Category />
       <DiscoverProducts />
       <BestSellers/>
+      <SummerSale/>
     </div>
   );
 }
