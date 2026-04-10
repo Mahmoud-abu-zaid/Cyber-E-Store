@@ -2,8 +2,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import ProductCard from "./product-card";
-import { Product } from "./Types/products";
-import useDiscoverProducts from "./hooks/use-diecover-products";
+import { Product } from "../Types/products";
+import useDiscoverProducts from "../hooks/use-diecover-products";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 export default function DiscoverProductsClient({ products }: { products: Product[] }) {
@@ -76,16 +76,16 @@ export default function DiscoverProductsClient({ products }: { products: Product
         </div>
       )}
       {activeTab === "Bestseller" &&
-       <div className="flex flex-col justify-center items-center gap-1">
-        <Image src="/img/Website icon.webp" alt="bestseller" width={100} height={100} className="py-3" loading="lazy"/>
-        <p className="text-2xl font-semibold">we{"'"}re coming soon..</p>
-        <p className="font-semibold text-lg"><em>we{"'"}re working on our new website. </em> </p>
+        <div className="flex flex-col justify-center items-center gap-1">
+          <Image src="/img/Website icon.webp" alt="bestseller" width={100} height={100} className="py-3" loading="lazy" />
+          <p className="text-2xl font-semibold">we{"'"}re coming soon..</p>
+          <p className="font-semibold text-lg"><em>we{"'"}re working on our new website. </em> </p>
         </div>}
-      {activeTab === "Featured Products" && 
-      <div className="flex flex-col justify-center items-center gap-1">
-        <Image src="/img/Website icon.webp" alt="bestseller" width={100} height={100} className="py-3" loading="lazy"/>
-        <p className="text-2xl font-semibold">we{"'"}re coming soon..</p>
-        <p className="font-semibold text-lg"><em>we{"'"}re working on our new website. </em></p>
+      {activeTab === "Featured Products" &&
+        <div className="flex flex-col justify-center items-center gap-1">
+          <Image src="/img/Website icon.webp" alt="bestseller" width={100} height={100} className="py-3" loading="lazy" />
+          <p className="text-2xl font-semibold">we{"'"}re coming soon..</p>
+          <p className="font-semibold text-lg"><em>we{"'"}re working on our new website. </em></p>
         </div>}
     </div>
   );

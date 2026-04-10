@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Product } from "./Types/products";
+import { Product } from "../Types/products";
 import { IoMdHeartEmpty } from "react-icons/io";
 
 export default function ProductCard({ productCard }: { productCard: Product }) {
