@@ -1,17 +1,35 @@
-import Image from "next/image";
-import { getProductById } from "@/modules/discover-products/services/products-services";
+import Link from "next/link"
+import { IoIosArrowForward } from "react-icons/io"
+import { getProductById } from "@/modules/discover-products/services/products-services"
+import ProductDetailsClient from "@/modules/product-details/components/product-details-client"
 
-export default async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-
-  const product = await getProductById(id);
+export default async function ProductDetails({ params, }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const product = await getProductById(id)
 
   return (
-    <div className="pt-11">
-      <Image src={product.thumbnail} alt={product.title} width={200} height={200} className="w-40 h-40" />
-      <h1>{product.title}</h1>
-      <p>{product.description}</p>
-      <p>${product.price}</p>
-    </div>
-  );
+    <section className="pt-18 2xl:container 2xl:mx-auto px-4">
+      <div className="hidden lg:flex items-center gap-3 text-muted-text ">
+        <Link href="/">Home</Link>
+        <span className="text-xl">
+          <IoIosArrowForward />
+        </span>
+        <Link href="/products">Products</Link>
+        <span className="text-xl">
+          <IoIosArrowForward />
+        </span>
+        <Link href="/products">{product.tags[0]}</Link>
+        <span className="text-xl">
+          <IoIosArrowForward />
+        </span>
+        <Link href="/products">{product.brand}</Link>
+        <span className="text-xl">
+          <IoIosArrowForward />
+        </span>
+        <span className="text-black">{product.title}</span>
+      </div>
+
+      <ProductDetailsClient product={product} />
+    </section>
+  )
 }
