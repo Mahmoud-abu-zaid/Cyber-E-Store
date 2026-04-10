@@ -42,7 +42,7 @@ const bestSellingProducts = [
 ]
 export default function BestSellers() {
   return (
-    <div>
+    <section>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
         {bestSellingProducts.map((product, index) =>
           <div key={index} className={`${product.backgroundColor} text-${product.color} flex flex-col items-center justify-center gap-4 p-7`}>
@@ -57,6 +57,6 @@ export default function BestSellers() {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }

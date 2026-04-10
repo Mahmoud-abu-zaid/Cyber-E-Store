@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function SummerSale() {
   return (
-    <div className=" flex justify-between gap-4 bg-linear-to-tl from-black to-[#787878] sm:h-80 h-60">
+    <section className=" flex justify-between gap-4 bg-linear-to-tl from-black to-[#787878] sm:h-80 h-60 relative">
       <div>
         <Image src="/img/banner big summer sale 2 .webp" alt="Summer Sale 1" width={420} height={420} className="absolute left-0 sm:w-80 w-40" loading="lazy" />
       </div>
@@ -16,6 +16,6 @@ export default function SummerSale() {
       <div className="flex items-end">
         <Image src="/img/banner big summer sale 1 .webp" alt="Big Summer Sale 2" width={370} height={370} className=" absolute right-0 sm:w-60 w-37.5" loading="lazy" />
       </div>
-    </div>
+    </section>
   );
 }
