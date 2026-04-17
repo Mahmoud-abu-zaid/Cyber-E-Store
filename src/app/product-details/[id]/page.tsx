@@ -3,6 +3,7 @@ import { IoIosArrowForward } from "react-icons/io"
 import { getProductById } from "@/modules/discover-products/services/products-services"
 import ProductDetailsClient from "@/modules/product-details/components/product-details-client"
 import ProductScreenDetails from "@/modules/product-details/components/product-screen-details"
+import ProductCustomerReviews from "@/modules/product-details/components/product-customer-reviews"
 
 export default async function ProductDetails({ params, }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -33,9 +34,10 @@ export default async function ProductDetails({ params, }: { params: Promise<{ id
 
         <ProductDetailsClient product={product} />
       </div>
-       <div>
-      <ProductScreenDetails product={product} />
-    </div>
+      <div>
+        <ProductScreenDetails product={product} />
+        <ProductCustomerReviews product={product} />
+      </div>
     </section>
   )
 }
