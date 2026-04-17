@@ -112,9 +112,8 @@ export default function Header() {
               return (
                 <li
                   key={link.name}
-                  className={`${
-                    pathname == link.href ? "text-black bg-thread-bg shadow-[0_0px_10px_#f5f5f5]" : "text-muted-text"
-                  } hover:bg-thread-bg hover:text-black hover:shadow-[0_0px_10px_#f5f5f5] text-center  min-w-full rounded-lg`}
+                  className={`${pathname == link.href ? "text-black bg-thread-bg shadow-[0_0px_10px_#f5f5f5]" : "text-muted-text"
+                    } hover:bg-thread-bg hover:text-black hover:shadow-[0_0px_10px_#f5f5f5] text-center  min-w-full rounded-lg`}
                 >
                   <Link href={link.href} className={`hover:text-black flex justify-center py-2`}>
                     {link.name}
@@ -137,14 +136,18 @@ export default function Header() {
             <Link href="/" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
               <PiShoppingCart />
             </Link>
+            {isLoggedIn && (
+              <div className="flex items-center gap-4 text-xl -ml-3">
+                <Link href="/account" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
+                  <GoPerson />
+                </Link>
 
-            <Link href="/account" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
-              <GoPerson />
-            </Link>
+                <button onClick={handleLogout} className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5] text-red-500 cursor-pointer">
+                  <CiLogout />
+                </button>
+              </div>
+            )}
 
-            <button onClick={handleLogout} className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5] text-red-500 cursor-pointer">
-              <CiLogout />
-            </button>
           </div>
         </div>
       )}
