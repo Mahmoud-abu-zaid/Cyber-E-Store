@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function ProductScreenDetails({ product }: { product: Product }) {
   const [moreDetails, setMoreDetails] = useState(false);
   return <>
-    <div className="bg-muted sm:px-10 px-5 sm:py-10 py-5 flex justify-center items-center">
+    <section className="bg-muted sm:px-10 px-5 sm:py-10 py-5 flex justify-center items-center">
       <div className="bg-white  px-5 py-5 rounded-lg">
         <div>
           <h2 className="text-2xl pb-3">Details</h2>
@@ -66,6 +66,6 @@ export default function ProductScreenDetails({ product }: { product: Product }) 
       </div>
       <div>
       </div>
-    </div>
+    </section>
   </>
 }

@@ -10,7 +10,7 @@ export default function ProductDetailsClient({ product }: { product: Product }) 
   const [activeImage, setActiveImage] = useState(0)
 
   return <>
-    <div className="grid lg:grid-cols-2 grid-rows-1 py-8">
+    <section className="grid lg:grid-cols-2 grid-rows-1 py-8">
       <div className="lg:sticky lg:top-24 self-start">
         <div className="flex lg:flex-row flex-col-reverse justify-center items-center gap-4 lg:gap-0">
           <div className="flex lg:flex-col flex-row flex-wrap gap-4 py-6">
@@ -35,6 +35,6 @@ export default function ProductDetailsClient({ product }: { product: Product }) 
       <div className="flex flex-col gap-4">
         <ProductSpecifications product={product} />
       </div>
-    </div>
+    </section>
   </>
 }
