@@ -1,10 +1,13 @@
 "use client";
+import { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { Product } from "@/modules/discover-products/Types/products";
-import { useState } from "react";
 
 export default function ProductScreenDetails({ product }: { product: Product }) {
   const [moreDetails, setMoreDetails] = useState(false);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return <>
     <section className="bg-muted sm:px-10 px-5 sm:py-10 py-5 flex justify-center items-center">
       <div className="bg-white  px-5 py-5 rounded-lg">
