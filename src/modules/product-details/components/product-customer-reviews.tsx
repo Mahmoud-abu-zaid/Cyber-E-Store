@@ -14,9 +14,9 @@ export default function ProductCustomerReviews({ product }: { product: Product }
           <p className="sm:text-sm text-lg text-gray-600">
             of {product.reviews.length} reviews
           </p>
-          <p>
+          <div>
             <ProductRating rating={product.rating} />
-          </p>
+          </div>
         </div>
 
         <div className="flex flex-col w-full gap-4">

@@ -1,13 +1,26 @@
 "use client";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 import ProductCard from "./product-card";
 import { Product } from "../Types/products";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "@/components/sections/loading";
+import GetProducts from "../services/products-services";
 import useDiscoverProducts from "../hooks/use-diecover-products";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
-export default function DiscoverProductsClient({ products }: { products: Product[] }) {
+export default function DiscoverProductsClient() {
   const { activeTab, setActiveTab, taps } = useDiscoverProducts();
+
+  const { data: products = [], isLoading } = useQuery<Product[]>({
+    queryKey: ["discover-products"],
+    queryFn: GetProducts,
+    staleTime: 1000 * 60 * 5,
+  });
+
+  if (isLoading) return <Loading />;
+
 
   return (
     <div className="pb-12 px-3 w-full lg:container lg:mx-auto">
