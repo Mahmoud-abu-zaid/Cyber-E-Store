@@ -8,7 +8,7 @@ export default function ProductCard({ productCard }: { productCard: Product }) {
   return (
     <div
       key={id}
-      className="flex flex-col text-center items-center justify-between h-full bg-accent 
+      className="flex flex-col text-center items-center justify-between bg-accent 
           min-[992px]:hover:ring-1 min-[992px]:hover:ring-black py-5 px-3 rounded min-[992px]:w-75  transition-all duration-200
           ease-out min-[992px]:hover:scale-[1.02]"
     >
