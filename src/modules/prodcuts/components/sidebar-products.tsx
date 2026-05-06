@@ -3,8 +3,12 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useProductsStore } from "../stores/products-store";
 
 export default function SidebarProducts() {
-  const { isBrandOpen, setIsBrandOpen, selectedBrands, setSelectedBrands, search, setSearch } = useProductsStore();
+
   const brands = ["Apple", "Samsung", "Xiaomi", "Oppo", "OnePlus", "Google", "Sony", "Huawei", "Nokia"];
+  const { filters, setSearch, setSelectedBrands, isBrandOpen, setIsBrandOpen } = useProductsStore();
+
+  const { search, selectedBrands } = filters;
+
   return (
     <div >
       <button
@@ -16,18 +20,22 @@ export default function SidebarProducts() {
         <div className="flex flex-col gap-3 mt-3">
           <div className="flex items-center bg-muted px-3 rounded-lg">
             <LucideSearch className="text-muted-input" />
-            <input type="text" className="bg-muted p-2 w-full outline-none" placeholder="Search brand" value={search} onChange={(e) => setSearch(e.target.value)} />
+            <input type="text" className="bg-muted p-2 w-full outline-none" placeholder="Search brand" value={search}
+              onChange={(e) => setSearch(e.target.value)} />
           </div>
 
           {brands.map((brand) => (
             <label key={brand} htmlFor={brand} className="flex items-center gap-2 text-muted-foreground hover:text-black transition cursor-pointer pl-1" >
-              <input id={brand} type="checkbox" checked={selectedBrands.includes(brand)} onChange={(e) => {
-                if (e.target.checked) {
-                  setSelectedBrands([...selectedBrands, brand])
-                } else {
-                  setSelectedBrands(selectedBrands.filter((product) => product !== brand))
-                }
-              }} className="accent-black" />
+              <input type="checkbox" id={brand} className="accent-black" checked={selectedBrands.includes(brand)}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setSelectedBrands([...selectedBrands, brand]);
+                  } else {
+                    setSelectedBrands(
+                      selectedBrands.filter((b) => b !== brand)
+                    );
+                  }
+                }} />
               <span>{brand}</span>
             </label>
           ))}
