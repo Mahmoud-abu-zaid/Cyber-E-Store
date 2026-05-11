@@ -1,18 +1,21 @@
 import { LucideSearch } from "lucide-react";
 import { IoIosArrowDown } from "react-icons/io";
 import { useProductsStore } from "../stores/products-store";
+import { useProductsHooks } from "../hooks/use-products-hooks";
 
 export default function SidebarProducts() {
 
   const brands = ["Apple", "Samsung", "Xiaomi", "Oppo", "OnePlus", "Google", "Sony", "Huawei", "Nokia"];
-  const { filters, setSearch, setSelectedBrands, isBrandOpen, setIsBrandOpen } = useProductsStore();
+  const { filters, setSearch, setSelectedBrands } = useProductsStore();
+  const { isBrandOpen, setIsBrandOpen } = useProductsHooks()
+
 
   const { search, selectedBrands } = filters;
 
   return (
     <div >
       <button
-        className="flex justify-between items-center w-full text-xl border-b pb-2 cursor-pointer" onClick={() => setIsBrandOpen(!isBrandOpen)}>
+        className="flex justify-between items-center w-full text-xl border-b pb-2 cursor-pointer" onClick={() => setIsBrandOpen(state => !state)}>
         <p className="font-medium">Brand</p>
         <IoIosArrowDown className={`transition-transform ${isBrandOpen ? "rotate-180" : ""}`} />
       </button>

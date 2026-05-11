@@ -4,6 +4,7 @@ export function useProductsHooks() {
   const [search, setSearch] = useState("");
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [isBrandOpen, setIsBrandOpen] = useState(false);
+  const [isPriceOpen, setIsPriceOpen] = useState(false);
 
   return {
     search,
@@ -12,5 +13,7 @@ export function useProductsHooks() {
     setSelectedBrands,
     isBrandOpen,
     setIsBrandOpen,
+    isPriceOpen,
+    setIsPriceOpen
   };
 }

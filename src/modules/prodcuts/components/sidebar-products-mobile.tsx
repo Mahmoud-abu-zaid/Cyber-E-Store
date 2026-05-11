@@ -1,19 +1,20 @@
 "use client";
 
 import { LucideSearch } from "lucide-react";
-import { useProductsStore } from "../stores/products-store";
-import { IoIosArrowBack, IoIosArrowDown } from "react-icons/io";
 import { usePriceConfig } from "../constants/price-config";
+import { useProductsStore } from "../stores/products-store";
+import { useProductsHooks } from "../hooks/use-products-hooks";
+import { IoIosArrowBack, IoIosArrowDown } from "react-icons/io";
 
 const BRANDS = ["Apple", "Samsung", "Xiaomi", "Oppo", "OnePlus", "Google", "Sony", "Huawei", "Nokia"];
 
 export default function SidebarProductsMobile({ onClose }: { onClose: () => void }) {
 
   const { draftFilters, setDraftSearch, setDraftSelectedBrands, setDraftPriceRange } = useProductsStore();
-  const { isBrandOpen, setIsBrandOpen, isPriceOpen, setIsPriceOpen } = useProductsStore();
   const { applyDraftFilters, resetDraftFilters } = useProductsStore();
   const { search, selectedBrands, priceRange } = draftFilters;
   const { minPrice, maxPrice, gap, step } = usePriceConfig();
+  const { isBrandOpen, setIsBrandOpen, isPriceOpen, setIsPriceOpen } = useProductsHooks()
 
   return (
     <div className="space-y-4">
@@ -29,7 +30,7 @@ export default function SidebarProductsMobile({ onClose }: { onClose: () => void
         <h2 className="text-2xl font-medium">Filters</h2>
       </div>
       <div>
-        <button className="flex w-full items-center justify-between border-b pb-2 text-xl" onClick={() => setIsPriceOpen(!isPriceOpen)}>
+        <button className="flex w-full items-center justify-between border-b pb-2 text-xl" onClick={() => setIsPriceOpen(state => !state)}>
           <span className="font-medium">Price</span>
           <IoIosArrowDown className={`transition-transform ${isPriceOpen ? "rotate-180" : ""}`} />
         </button>
@@ -47,7 +48,6 @@ export default function SidebarProductsMobile({ onClose }: { onClose: () => void
               </div>
             </div>
 
-            {/* Slider */}
             <div className="relative h-1 bg-gray-300 rounded">
               <div className="relative h-1 bg-gray-200 rounded-full">
                 <div
@@ -79,7 +79,7 @@ export default function SidebarProductsMobile({ onClose }: { onClose: () => void
         )}
       </div>
       <div>
-        <button onClick={() => setIsBrandOpen(!isBrandOpen)} className="flex w-full items-center justify-between border-b pb-2 text-xl">
+        <button onClick={() => setIsBrandOpen(state => !state)} className="flex w-full items-center justify-between border-b pb-2 text-xl">
           <span className="font-medium">Brand</span>
           <IoIosArrowDown className={`transition-transform ${isBrandOpen ? "rotate-180" : ""}`} />
         </button>

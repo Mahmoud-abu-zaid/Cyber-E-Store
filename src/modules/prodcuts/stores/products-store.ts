@@ -69,6 +69,5 @@ export const useProductsStore = create<ProductsState>((set) => ({
       draftFilters: structuredClone(initialFilters),
     })),
 
-  setIsBrandOpen: (value) => set({ isBrandOpen: value }),
-  setIsPriceOpen: (value) => set({ isPriceOpen: value }),
+
 }));
