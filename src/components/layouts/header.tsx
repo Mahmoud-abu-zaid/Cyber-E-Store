@@ -8,8 +8,9 @@ import { FaRegStar } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import { PiShoppingCart } from "react-icons/pi";
 import { FaRegCircleXmark } from "react-icons/fa6";
-import { useAuth } from "@/providers/auth-provider";
 import { CiLogout, CiSearch } from "react-icons/ci";
+import { useAuth } from "@/providers/auth-provider";
+import { useCart } from "@/modules/cart/hooks/use-cart";
 import { useMobileMenu } from "@/hooks/use-mobile-menu";
 import { RiMenuFill, RiShoppingBag3Line } from "react-icons/ri";
 import { useLogout } from "@/modules/auth/login/hooks/use-logout";
@@ -25,6 +26,7 @@ export default function Header() {
   const pathname = usePathname();
   const { isLoggedIn } = useAuth();
   const handleLogout = useLogout();
+  const { data: items = [] } = useCart();
   const { showMenu, setShowMenu } = useMobileMenu();
 
   return (
@@ -61,8 +63,11 @@ export default function Header() {
             <Link href="/">
               <SlHeart />
             </Link>
-            <Link href="/" className="cursor-pointer">
-              <PiShoppingCart />
+            <Link href="/cart" className="cursor-pointer">
+              <div className=" relative ">
+                <PiShoppingCart />
+                <span className={`absolute -top-3 -right-3 bg-red-500 w-5 h-5 text-center text-sm rounded-full text-white ${items[0] ? "block" : "hidden"}`}>{items.length}</span>
+              </div>
             </Link>
             {isLoggedIn && (
               <div>
