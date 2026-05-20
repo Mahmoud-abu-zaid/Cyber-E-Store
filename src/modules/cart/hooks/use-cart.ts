@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "sonner";
+import { CartItem } from "../types/cart-types";
 import { createClient } from "@/lib/supabase/client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -20,14 +21,18 @@ async function fetchCart() {
 
   const merged = await Promise.all(
     cartItems.map(async (item) => {
-      const { data: product } = await axios.get(
-        `https://dummyjson.com/products/${item.product_id}`
-      );
-      return { ...item, product };
+      try {
+        const { data: product } = await axios.get(
+          `https://dummyjson.com/products/${item.product_id}`
+        );
+        return { ...item, product };
+      } catch {
+        return { ...item, product: null };
+      }
     })
   );
 
-  return merged;
+  return merged.filter((item) => item.product !== null);
 }
 
 // HOOKS
@@ -59,8 +64,12 @@ export function useAddToCart() {
       queryClient.invalidateQueries({ queryKey: ["cart"] });
       toast.success("Added to cart! 🛒");
     },
-    onError: () => {
-      toast.error("Failed to update cart. Please try again.");
+    onError: (error) => {
+      if (error.message === "Not authenticated") {
+        toast.error("Please sign in");
+      } else {
+        toast.error("Update failed, please try again");
+      }
     }
   });
 }
@@ -74,7 +83,7 @@ export function useRemoveFromCart() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["cart"] });
-      toast.success("Removed from cart! 🗑️");
+      toast.error("Removed from cart! 🗑️");
     },
   });
 }
@@ -90,8 +99,26 @@ export function useUpdateQuantity() {
         await supabase.from("cart_items").update({ quantity }).eq("id", id);
       }
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["cart"] });
-    }
+    onMutate: async ({ id, quantity }) => {
+      await queryClient.cancelQueries({ queryKey: ["cart"] });
+
+      const previous = queryClient.getQueryData<CartItem[]>(["cart"]);
+
+      queryClient.setQueryData<CartItem[]>(["cart"], (old = []) => {
+
+        if (quantity <= 0) return old.filter((item) => item.id !== id);
+
+        return old.map((item) =>
+          item.id === id ? { ...item, quantity } : item
+        );
+      });
+      return { previous };
+    },
+    onError: (_err, _vars, context) => {
+      if (context?.previous) {
+        queryClient.setQueryData<CartItem[]>(["cart"], context.previous);
+      }
+    },
   });
 }
+
