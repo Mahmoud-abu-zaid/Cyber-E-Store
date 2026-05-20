@@ -1,14 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
+import { FaHeart } from "react-icons/fa";
 import { Product } from "../Types/products";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { useAddToCart } from "@/modules/cart/hooks/use-cart";
-import { useWishlistStore } from "@/modules/wishlist/store/wishlist-store";
+import { useToggleWishlist, useWishlist } from "@/modules/wishlist/hooks/use-wishlist";
 
 export default function ProductCard({ productCard }: { productCard: Product }) {
   const { id, title, price, thumbnail } = productCard;
   const { mutate: addToCart } = useAddToCart();
-  const { toggleWishlist, items } = useWishlistStore();
+  const { data: wishlistItems = [] } = useWishlist();
+  const { mutate: toggleWishlist } = useToggleWishlist();
+
+  const isWishlisted = wishlistItems.some((i) => i.product_id === String(id));
+
   return (
     <div
       key={id}
@@ -16,8 +21,7 @@ export default function ProductCard({ productCard }: { productCard: Product }) {
           min-[992px]:hover:ring-1 min-[992px]:hover:ring-black py-5 px-3 rounded  transition-all duration-200
           ease-out min-[992px]:hover:scale-[1.02]">
       <button onClick={() => toggleWishlist(id)} className="text-2xl self-end pr-1 cursor-pointer text-muted-input">
-        {items.includes(id) ? "❤️" : "🤍"}
-        {/* <IoMdHeartEmpty /> */}
+        {isWishlisted ? <FaHeart className="text-red-500"/> : <IoMdHeartEmpty />}
       </button>
       <Link href={`/product-details/${id}`} className="flex flex-col items-center justify-center gap-2">
         <Image src={thumbnail} alt={title} width={200} height={200} className="w-40 h-40" />
