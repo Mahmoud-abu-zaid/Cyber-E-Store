@@ -1,21 +1,24 @@
 "use client";
 
-import { createClient } from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
+import { useQueryClient } from "@tanstack/react-query";
 
 export function useLogout() {
+  const queryClient = useQueryClient();
   const router = useRouter();
 
   const handleLogout = async () => {
     const supabase = createClient();
 
-    const { error } = await supabase.auth.signOut();
-    if (error) return;
+    await supabase.auth.signOut();
+    queryClient.clear(); // ✅ clear كل الـ cache
 
-    router.replace("/auth/login"); 
+    router.replace("/");
     toast.success("Logged out successfully 👋")
   };
 
   return handleLogout;
 }
+

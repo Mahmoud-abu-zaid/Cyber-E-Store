@@ -2,6 +2,7 @@ import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { useQueryClient } from "@tanstack/react-query";
 import { LoginFormTypes } from "../../types/form-types";
 
 export default function useLoginForm() {
@@ -10,6 +11,8 @@ export default function useLoginForm() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<LoginFormTypes>();
+
+  const queryClient = useQueryClient();
 
   const router = useRouter();
   const supabase = createClient();
@@ -24,7 +27,7 @@ export default function useLoginForm() {
       toast.error(error.message);
       return;
     }
-
+    await queryClient.invalidateQueries();
     toast.success("Welcome back 👋");
     router.replace("/account");
   };
