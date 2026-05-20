@@ -14,6 +14,7 @@ import { useCart } from "@/modules/cart/hooks/use-cart";
 import { useMobileMenu } from "@/hooks/use-mobile-menu";
 import { RiMenuFill, RiShoppingBag3Line } from "react-icons/ri";
 import { useLogout } from "@/modules/auth/login/hooks/use-logout";
+import { useWishlist } from "@/modules/wishlist/hooks/use-wishlist";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -27,6 +28,7 @@ export default function Header() {
   const { isLoggedIn } = useAuth();
   const handleLogout = useLogout();
   const { data: items = [] } = useCart();
+  const { data: products = [] } = useWishlist();
   const { showMenu, setShowMenu } = useMobileMenu();
 
   return (
@@ -60,8 +62,11 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-4 text-xl ">
-            <Link href="/">
-              <SlHeart />
+            <Link href="/wishlist">
+              <div className=" relative ">
+                <SlHeart />
+                <span className={`absolute -top-3 -right-3 bg-red-500 w-5 h-5 text-center text-sm rounded-full text-white ${products[0] ? "block" : "hidden"}`}>{products.length}</span>
+              </div>
             </Link>
             <Link href="/cart" className="cursor-pointer">
               <div className=" relative ">
@@ -134,13 +139,20 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-8 text-xl text-black ">
-            <Link className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]" href="/">
-              <SlHeart />
+            <Link href="/wishlist" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
+              <div className=" relative ">
+                <SlHeart />
+                <span className={`absolute -top-3 -right-3 bg-red-500 w-5 h-5 text-center text-sm rounded-full text-white ${products[0] ? "block" : "hidden"}`}>{products.length}</span>
+              </div>
             </Link>
 
-            <Link href="/" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
-              <PiShoppingCart />
+            <Link href="/cart" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
+              <div className=" relative ">
+                <PiShoppingCart />
+                <span className={`absolute -top-3 -right-3 bg-red-500 w-5 h-5 text-center text-sm rounded-full text-white ${items[0] ? "block" : "hidden"}`}>{items.length}</span>
+              </div>
             </Link>
+
             {isLoggedIn && (
               <div className="flex items-center gap-4 text-xl -ml-3">
                 <Link href="/account" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
