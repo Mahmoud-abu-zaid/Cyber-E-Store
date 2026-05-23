@@ -2,7 +2,8 @@
 import Image from "next/image";
 import useAccountForm from "../hooks/use-account-form";
 export default function AccountForm() {
-  const { register, handleSubmit, errors, image, preview, handleImage, onSubmit, setImage, setPreview, isDirty } = useAccountForm();
+  const { register, errors, handleSubmit, handleImage, preview, onSubmit, isLoading, setImage, setPreview, reset } = useAccountForm();
+
   return (
     <>
       <div className="pt-22">
@@ -12,7 +13,7 @@ export default function AccountForm() {
 
             <div className="mt-2 flex flex-col justify-center items-center gap-3">
               <label htmlFor="fileInput" className="cursor-pointer w-32 h-32 border flex items-center justify-center overflow-hidden rounded-full">
-                {image && preview ? <Image src={preview} alt="profile image" width={128} height={128} unoptimized /> : <span className="text-sm text-gray-400">Upload</span>}
+                {preview ? <Image src={preview} alt="profile image" width={128} height={128} unoptimized /> : <span className="text-sm text-gray-400">Upload</span>}
               </label>
               <input type="file" accept="image/*" onChange={handleImage} className="hidden" id="fileInput" />
             </div>
@@ -74,7 +75,7 @@ export default function AccountForm() {
                       message: "Only lowercase letters, numbers, . and _ allowed",
                     },
                   })}
-                  type="email"
+                  type="text"
                   className="bg-[#f5f5f5] w-[95%] m-3 p-2 rounded"
                 />
                 {errors.userName && <p className="text-red-500 text-sm pl-3">{errors.userName.message}</p>}
@@ -113,7 +114,7 @@ export default function AccountForm() {
                 <input
                   {...register("phoneNumber", {
                     pattern: {
-                      value: /^\+20(1)[0-2,5]{1}[0-9]{8}$/,
+                      value: /^[0-9+\s-]{7,15}$/,
                       message: "Invalid phone number format",
                     },
                   })}
@@ -126,20 +127,19 @@ export default function AccountForm() {
               <button
                 type="button"
                 className=" cursor-pointer"
+                disabled={isLoading}
                 onClick={() => {
+                  reset();
                   setImage(null);
                   setPreview(null);
-                }}
-              >
+                }}>
                 Cancel
               </button>
               <button
-                title={!isDirty ? "Make changes to enable saving" : ""}
-                className={`px-5 py-2 bg-black rounded text-white ${isDirty ? "cursor-pointer" : " cursor-not-allowed bg-main-bg"}`}
                 type="submit"
-                disabled={!isDirty}
+                className="px-5 py-2 bg-black rounded text-white cursor-pointer"
               >
-                Save Changes
+                {isLoading ? "Saving..." : "Save Changes"}
               </button>
             </div>
           </form>
