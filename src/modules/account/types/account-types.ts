@@ -1,5 +1,4 @@
 export interface AccountTypes {
-  img: string;
   firstName: string;
   lastName: string;
   userName: string; 

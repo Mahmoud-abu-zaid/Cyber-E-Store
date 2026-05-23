@@ -13,7 +13,7 @@ export function useLogout() {
     const supabase = createClient();
 
     await supabase.auth.signOut();
-    queryClient.clear(); // ✅ clear كل الـ cache
+    queryClient.clear(); 
 
     router.replace("/");
     toast.success("Logged out successfully 👋")
