@@ -15,6 +15,7 @@ import { useMobileMenu } from "@/hooks/use-mobile-menu";
 import { RiMenuFill, RiShoppingBag3Line } from "react-icons/ri";
 import { useLogout } from "@/modules/auth/login/hooks/use-logout";
 import { useWishlist } from "@/modules/wishlist/hooks/use-wishlist";
+import { useProfile } from "@/modules/account/hooks/use-profile";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -27,6 +28,7 @@ export default function Header() {
   const pathname = usePathname();
   const { isLoggedIn } = useAuth();
   const handleLogout = useLogout();
+  const { data: profile } = useProfile();
   const { data: items = [] } = useCart();
   const { data: products = [] } = useWishlist();
   const { showMenu, setShowMenu } = useMobileMenu();
@@ -76,8 +78,12 @@ export default function Header() {
             </Link>
             {isLoggedIn && (
               <div>
-                <button onClick={() => setShowMenu((show) => !show)} className="cursor-pointer relative">
-                  <GoPerson />
+                <button onClick={() => setShowMenu((show) => !show)} className="cursor-pointer relative flex items-center ">
+                  {profile?.avatar_url ? (
+                    <Image src={profile.avatar_url} alt="profile image" width={90} height={90} className="rounded-full h-8 w-8" />
+                  ) :
+                    <GoPerson />
+                  }
                 </button>
                 <div>
                   {showMenu && (
@@ -155,8 +161,12 @@ export default function Header() {
 
             {isLoggedIn && (
               <div className="flex items-center gap-4 text-xl -ml-3">
-                <Link href="/account" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
-                  <GoPerson />
+                <Link href="/account" className={`${profile?.avatar_url ? "" : "bg-thread-bg p-2"} rounded-full shadow-[0_0px_20px_#f5f5f5]`}>
+                  {profile?.avatar_url ? (
+                    <Image src={profile.avatar_url} alt="profile image" width={90} height={90} className="rounded-full h-8 w-8" />
+                  ) :
+                    <GoPerson />
+                  }
                 </Link>
 
                 <button onClick={handleLogout} className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5] text-red-500 cursor-pointer">
