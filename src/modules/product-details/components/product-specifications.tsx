@@ -1,10 +1,18 @@
 import { AiOutlineShop } from "react-icons/ai";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { HiOutlineBadgeCheck } from "react-icons/hi";
+import { useAddToCart } from "@/modules/cart/hooks/use-cart";
 import { Product } from "@/modules/discover-products/Types/products";
 import { Colors, MemerySize, ProductDetails } from "../constants/product-specs";
+import { useToggleWishlist, useWishlist } from "@/modules/wishlist/hooks/use-wishlist";
 
 export default function ProductSpecifications({ product }: { product: Product }) {
+  const { mutate: addToCart } = useAddToCart();
+  const { data: wishlistItems = [] } = useWishlist();
+  const { mutate: toggleWishlist } = useToggleWishlist();
+
+  const isWishlisted = wishlistItems.some((i) => i.product_id === String(product.id));
+
   return <div>
     <div>
       <h1 className="text-4xl font-bold pb-4">{product.title}</h1>
@@ -52,8 +60,8 @@ export default function ProductSpecifications({ product }: { product: Product })
     <p className="py-5">{product.description}</p>
 
     <div className="flex gap-3">
-      <button className="text-black w-full h-12  border border-black cursor-pointer hover:bg-muted rounded-md transition delay-25">Add to Wishlist</button>
-      <button className="text-white w-full h-12 bg-black cursor-pointer rounded-md">Add to Card</button>
+      <button className="text-black w-full h-12  border border-black cursor-pointer hover:bg-muted rounded-md transition delay-25" onClick={() => toggleWishlist(String(product.id))}>  {isWishlisted ? "❤️ Wishlisted" : "Add to Wishlist"}</button>
+      <button className="text-white w-full h-12 bg-black cursor-pointer rounded-md" onClick={() => { addToCart(product.id) }}>Add to Card</button>
     </div>
 
     <div className="py-5 flex flex-wrap sm:justify-between  gap-3">
