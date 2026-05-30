@@ -124,10 +124,7 @@ export default function AccountForm() {
               </div>
             </div>
             <div className="flex justify-end gap-6 mx-6 my-2">
-              <button
-                type="button"
-                className=" cursor-pointer"
-                disabled={isLoading}
+              <button type="button" className=" cursor-pointer" disabled={isLoading}
                 onClick={() => {
                   reset();
                   setImage(null);
@@ -135,11 +132,14 @@ export default function AccountForm() {
                 }}>
                 Cancel
               </button>
-              <button
-                type="submit"
-                className="px-5 py-2 bg-black rounded text-white cursor-pointer"
-              >
-                {isLoading ? "Saving..." : "Save Changes"}
+
+              <button type="submit"
+                className="h-11 w-32 bg-black rounded text-white cursor-pointer flex items-center justify-center">
+                {isLoading ? (
+                  <div className="w-5 h-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                ) : (
+                  "Save Changes"
+                )}
               </button>
             </div>
           </form>
