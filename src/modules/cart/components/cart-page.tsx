@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { TbGardenCartOff } from "react-icons/tb";
 import { HiOutlineXMark } from "react-icons/hi2";
@@ -84,7 +85,9 @@ export default function CartPage() {
                   <p className="font-medium">Total</p>
                   <p className="font-medium"> ${(total + 79).toFixed(2)}</p>
                 </div>
-                <button className="border w-full h-12 rounded-md cursor-pointer mt-4 bg-black text-white">Checkout</button>
+                <Link href="/checkout" className="flex justify-center items-center border w-full h-12 rounded-md cursor-pointer mt-4 bg-black text-white">
+                  Checkout
+                </Link>
               </div>
             </div>
           </div>
