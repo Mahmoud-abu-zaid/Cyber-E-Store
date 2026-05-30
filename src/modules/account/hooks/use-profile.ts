@@ -12,9 +12,9 @@ export function useProfile() {
 
       const { data } = await supabase
         .from("user_profiles")
-        .select("avatar_url, first_name,last_name")
+        .select("avatar_url,first_name,last_name,address, phone_number")
         .eq("id", user.id)
-        .maybeSingle(); 
+        .maybeSingle();
 
       return data;
     },
