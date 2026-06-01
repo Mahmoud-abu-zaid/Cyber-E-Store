@@ -1,9 +1,21 @@
+import { Metadata } from "next";
 import Category from "@/components/sections/category";
 import SummerSale from "@/components/sections/summer-sale";
 import BestSellers from "@/components/sections/best-sellers";
 import HeroSectionVideo from "@/components/sections/hero-section";
 import FeaturedProducts from "@/components/sections/featured-products";
 import DiscoverProducts from "@/modules/discover-products/components/discover-products";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description: "Shop the latest electronics, smartphones, laptops, and gadgets at Cyber E-Store.",
+  keywords: ["electronics", "smartphones", "laptops", "gadgets", "online shopping", "Cyber E-Store"],
+  openGraph: {
+    title: "Cyber E-Store",
+    description: "Shop the latest electronics, smartphones, laptops, and gadgets.",
+    type: "website",
+  },
+};
 
 export default function Home() {
   return (
