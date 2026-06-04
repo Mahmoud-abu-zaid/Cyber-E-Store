@@ -28,9 +28,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setLoggedIn(!!session?.user);
     });
 
-    setTimeout(() => setLoading(false), 1000);
+    const timer = setTimeout(() => setLoading(false), 1000);
 
-    return () => subscription.unsubscribe();
+    return () => {
+      subscription.unsubscribe();
+      clearTimeout(timer);
+    };
   }, []);
 
   if (loading) {
