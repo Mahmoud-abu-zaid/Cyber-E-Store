@@ -1,10 +1,11 @@
 import "../styles/globals.css";
 import type { Metadata } from "next";
+import Providers from "@/providers/providers";
 import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
-import Providers from "@/providers/providers";
 import { AuthProvider } from "@/providers/auth-provider";
 import OfflineWrapper from "@/providers/offline-wrapper";
+import AnimateOnScroll from "@/components/animate-on-scroll";
 
 
 export const metadata: Metadata = {
@@ -48,7 +49,7 @@ export default function RootLayout({
             <AuthProvider>
               <Header />
               {children}
-              <Footer />
+              <AnimateOnScroll><Footer /></AnimateOnScroll>
             </AuthProvider>
           </OfflineWrapper>
         </Providers>
