@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 
 export default function HeroSectionVideo() {
@@ -10,13 +9,13 @@ export default function HeroSectionVideo() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <video className="mt-15 w-full h-[90vh] object-cover hidden lg:block" autoPlay loop muted playsInline>
+      <video className="mt-15 w-full h-[90vh] object-cover hidden lg:block" autoPlay loop muted playsInline poster="/img/hero-poster-desktop.webp">
         <source src="/video/background hero section.webm" type="video/webm" />
       </video>
-      <video className="mt-15 w-full h-[90vh] object-cover hidden md:block lg:hidden" autoPlay loop muted playsInline>
+      <video className="mt-15 w-full h-[90vh] object-cover hidden md:block lg:hidden" autoPlay loop muted playsInline poster="/img/hero-poster-tablet.webp">
         <source src="/video/background hero section tablet.webm" type="video/webm" />
       </video>
-      <video className="mt-15 w-full h-[90vh] object-cover block md:hidden" autoPlay loop muted playsInline>
+      <video className="mt-15 w-full h-[90vh] object-cover block md:hidden" autoPlay loop muted playsInline poster="/img/hero-poster-mobile.webp">
         <source src="/video/background hero section mobile.webm" type="video/webm" />
       </video>
 
@@ -26,9 +25,7 @@ export default function HeroSectionVideo() {
           background: "linear-gradient(90deg, transparent 0%, white 50%, transparent 100%)",
           width: "200%",
         }}
-        animate={{
-          x: ["-100%", "100%"],
-        }}
+        animate={{ x: ["-100%", "100%"] }}
         transition={{
           duration: 0.8,
           delay: 21,
@@ -39,7 +36,7 @@ export default function HeroSectionVideo() {
       />
 
       <motion.div
-        className="absolute inset-0  pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.35 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
@@ -52,14 +49,9 @@ export default function HeroSectionVideo() {
         transition={{ delay: 1.5, duration: 0.8 }}
       >
         <span className="text-xs tracking-widest uppercase">Scroll</span>
-
         <motion.div
           animate={{ y: [0, 12, 0] }}
-          transition={{
-            duration: 1.2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="w-4 h-4 border-b-2 border-r-2 border-white rotate-45" />
         </motion.div>
