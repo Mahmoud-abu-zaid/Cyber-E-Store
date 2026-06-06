@@ -4,6 +4,7 @@ import Providers from "@/providers/providers";
 import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
 import { AuthProvider } from "@/providers/auth-provider";
+import { domAnimation, LazyMotion } from "framer-motion";
 import OfflineWrapper from "@/providers/offline-wrapper";
 import AnimateOnScroll from "@/components/animate-on-scroll";
 
@@ -43,16 +44,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" as="image" href="/img/hero-poster-desktop.webp" media="(min-width: 1024px)" fetchPriority="high" />
+        <link rel="preload" as="image" href="/img/hero-poster-tablet.webp" media="(min-width: 768px) and (max-width: 1023px)" fetchPriority="high" />
+        <link rel="preload" as="image" href="/img/hero-poster-mobile.webp" media="(max-width: 767px)" fetchPriority="high" />
+      </head>
       <body>
-        <Providers>
-          <OfflineWrapper>
-            <AuthProvider>
-              <Header />
-              {children}
-              <AnimateOnScroll><Footer /></AnimateOnScroll>
-            </AuthProvider>
-          </OfflineWrapper>
-        </Providers>
+        <LazyMotion features={domAnimation}>
+          <Providers>
+            <OfflineWrapper>
+              <AuthProvider>
+                <Header />
+                {children}
+                <AnimateOnScroll><Footer /></AnimateOnScroll>
+              </AuthProvider>
+            </OfflineWrapper>
+          </Providers>
+        </LazyMotion>
       </body>
     </html>
   );
