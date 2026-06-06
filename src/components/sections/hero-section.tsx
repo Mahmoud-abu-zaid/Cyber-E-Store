@@ -1,9 +1,9 @@
 "use client";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export default function HeroSectionVideo() {
   return (
-    <motion.section
+    <m.section
       className="relative overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -19,7 +19,7 @@ export default function HeroSectionVideo() {
         <source src="/video/background hero section mobile.webm" type="video/webm" />
       </video>
 
-      <motion.div
+      <m.div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: "linear-gradient(90deg, transparent 0%, white 50%, transparent 100%)",
@@ -35,27 +35,27 @@ export default function HeroSectionVideo() {
         }}
       />
 
-      <motion.div
+      <m.div
         className="absolute inset-0 pointer-events-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.35 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       />
 
-      <motion.div
+      <m.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white pointer-events-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.8 }}
       >
         <span className="text-xs tracking-widest uppercase">Scroll</span>
-        <motion.div
+        <m.div
           animate={{ y: [0, 12, 0] }}
           transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="w-4 h-4 border-b-2 border-r-2 border-white rotate-45" />
-        </motion.div>
-      </motion.div>
-    </motion.section>
+        </m.div>
+      </m.div>
+    </m.section>
   );
 }
