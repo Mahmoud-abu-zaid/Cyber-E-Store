@@ -31,7 +31,7 @@ export default function Footer() {
         <div className="flex flex-col justify-between ">
           <div className="flex flex-col">
             <Link href="/" className="inline-block w-20 h-7">
-              <Image src="/img/Website logo white.png" alt="Website logo" className="object-contain" width={80} height={50} priority />
+              <Image src="/img/Website logo white.webp" alt="Website logo" className="object-contain" width={80} height={50} priority />
             </Link>
             <p className="pt-6 text-muted-text">We are a residential interior design firm located in Portland. Our boutique-studio offers more than</p>
           </div>

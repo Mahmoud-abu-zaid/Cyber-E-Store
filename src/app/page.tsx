@@ -1,13 +1,11 @@
 import { Metadata } from "next";
-import dynamic from "next/dynamic";
+import Category from "@/components/sections/category";
+import SummerSale from "@/components/sections/summer-sale";
+import BestSellers from "@/components/sections/best-sellers";
 import AnimateOnScroll from "@/components/animate-on-scroll";
 import HeroSectionVideo from "@/components/sections/hero-section";
-
-const FeaturedProducts = dynamic(() => import("@/components/sections/featured-products"));
-const Category = dynamic(() => import("@/components/sections/category"));
-const SummerSale = dynamic(() => import("@/components/sections/summer-sale"));
-const BestSellers = dynamic(() => import("@/components/sections/best-sellers"));
-const DiscoverProducts = dynamic(() => import("@/modules/discover-products/components/discover-products"));
+import FeaturedProducts from "@/components/sections/featured-products";
+import DiscoverProducts from "@/modules/discover-products/components/discover-products";
 
 export const metadata: Metadata = {
   title: "Home | Cyber E-Store",
@@ -24,11 +22,27 @@ export default function Home() {
   return (
     <div className="2xl:container 2xl:mx-auto">
       <HeroSectionVideo />
-      <AnimateOnScroll><FeaturedProducts /></AnimateOnScroll>
-      <AnimateOnScroll><Category /></AnimateOnScroll>
-      <AnimateOnScroll><DiscoverProducts /></AnimateOnScroll>
-      <AnimateOnScroll><BestSellers /></AnimateOnScroll>
-      <AnimateOnScroll><SummerSale /></AnimateOnScroll>
+
+      <AnimateOnScroll>
+        <FeaturedProducts />
+      </AnimateOnScroll>
+
+      <AnimateOnScroll>
+        <Category />
+      </AnimateOnScroll>
+
+      <AnimateOnScroll>
+        <DiscoverProducts />
+      </AnimateOnScroll>
+
+      <AnimateOnScroll>
+        <BestSellers />
+      </AnimateOnScroll>
+
+      <AnimateOnScroll>
+        <SummerSale />
+      </AnimateOnScroll>
+
     </div>
   );
 }
