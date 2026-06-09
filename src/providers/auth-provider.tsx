@@ -28,22 +28,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setLoggedIn(!!session?.user);
     });
 
-    const timer = setTimeout(() => setLoading(false), 1000);
+    setTimeout(() => setLoading(false), 1000);
 
-    return () => {
-      subscription.unsubscribe();
-      clearTimeout(timer);
-    };
+    return () => subscription.unsubscribe();
   }, []);
 
   if (loading) {
-    return (
-      <>
-        <Loading isLoading={loading} />
-        {children}
-      </>
-    );
+    return <Loading isLoading={loading} />;
   }
+
   return (
     <AuthContext.Provider value={{ isLoggedIn }}>
       {children}
