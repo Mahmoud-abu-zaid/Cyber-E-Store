@@ -38,26 +38,26 @@ export default function CartPage() {
 
               <div className="flex items-center">
                 <Image src={item.product?.thumbnail ?? ""} alt={item.product?.title ?? ""} width={116} height={96} className="sm:w-24 sm:h-24 w-20 h-20 rounded-md object-cover" />                <div className="flex sm:flex-col sm:gap-0 gap-3">
-                  <h4 className="sm:text-xl sm:w-50 w-18">{item.product?.title}</h4>
+                  <h3 className="sm:text-xl sm:w-50 w-18">{item.product?.title}</h3>
                   <p className="sm:flex hidden">{item.product?.brand}</p>
                   <p className="sm:flex hidden">{item.product?.tags[0]}</p>
                 </div>
               </div>
 
               <div className="flex items-center sm:gap-2 gap-1">
-                <button onClick={() => updateQuantity({ id: item.id, quantity: item.quantity - 1 })} className="text-xl cursor-pointer">-</button>
+                <button onClick={() => updateQuantity({ id: item.id, quantity: item.quantity - 1 })} className="text-xl cursor-pointer" aria-label="Decrease quantity">-</button>
                 <span className=" border py-1 px-3 rounded">{item.quantity}</span>
-                <button onClick={() => updateQuantity({ id: item.id, quantity: item.quantity + 1 })} className="text-xl cursor-pointer">+</button>
+                <button onClick={() => updateQuantity({ id: item.id, quantity: item.quantity + 1 })} className="text-xl cursor-pointer" aria-label="Increase quantity">+</button>
               </div>
               <p>${item.product?.price}</p>
-              <button onClick={() => removeFromCart(item.id)} className="text-2xl cursor-pointer"><HiOutlineXMark /></button>
+              <button onClick={() => removeFromCart(item.id)} className="text-2xl cursor-pointer" aria-label={`Remove ${item.product?.title} from cart`}><HiOutlineXMark /></button>
             </div>
 
           ))}
         </div>
         <div className="border p-4 sm:p-6 my-2 rounded-lg">
           <div className="sticky top-20">
-            <h3 className="text-xl font-bold">Order Summary</h3>
+            <h2 className="text-xl font-bold">Order Summary</h2>
             <div className="pt-4">
               <label>Discount code / Promo code</label>
               <input type="text" className="border p-3 w-full mt-2 rounded-lg" placeholder="Code" />

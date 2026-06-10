@@ -55,7 +55,7 @@ export default function RootLayout({
             <OfflineWrapper>
               <AuthProvider>
                 <Header />
-                {children}
+                <main>{children}</main>
                 <AnimateOnScroll><Footer /></AnimateOnScroll>
               </AuthProvider>
             </OfflineWrapper>

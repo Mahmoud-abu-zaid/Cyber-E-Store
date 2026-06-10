@@ -20,8 +20,9 @@ export default function ProductCard({ productCard }: { productCard: Product }) {
       className="flex flex-col text-center items-center justify-between bg-accent 
           min-[992px]:hover:ring-1 min-[992px]:hover:ring-black py-5 px-3 rounded  transition-all duration-200
           ease-out min-[992px]:hover:scale-[1.02]">
-      <button onClick={() => toggleWishlist(id)} className="text-2xl self-end pr-1 cursor-pointer text-muted-input">
-        {isWishlisted ? <FaHeart className="text-red-500"/> : <IoMdHeartEmpty />}
+      <button onClick={() => toggleWishlist(id)} className="text-2xl self-end pr-1 cursor-pointer text-muted-input"
+        aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}>
+        {isWishlisted ? <FaHeart className="text-red-500" /> : <IoMdHeartEmpty />}
       </button>
       <Link href={`/product-details/${id}`} className="flex flex-col items-center justify-center gap-2">
         <Image src={thumbnail} alt={title} width={200} height={200} className="w-40 h-40" />

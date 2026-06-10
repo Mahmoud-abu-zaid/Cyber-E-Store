@@ -50,6 +50,7 @@ export default function Category() {
                   transition
                   hover:bg-accent 
                 "
+                aria-label={category.name}
               >
                 <span className="text-4xl text-muted-foreground">{category.icon}</span>
                 <span className="text-sm font-medium text-center">{category.name}</span>

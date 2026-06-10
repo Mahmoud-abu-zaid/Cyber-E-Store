@@ -23,7 +23,7 @@ export default function Payment({ register, errors, cardData, control }: Payment
   return (
     <div className="grid md:grid-cols-2 gap-6">
       <div className="border p-4 rounded-lg">
-        <h4>Summary</h4>
+        <h2>Summary</h2>
         <div>
           {items.map((item) => (
             <div key={item.id} className="flex items-center justify-between gap-4 border-b py-2 pr-4 bg-accent my-2 rounded-md">

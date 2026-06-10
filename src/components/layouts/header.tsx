@@ -64,13 +64,13 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-4 text-xl ">
-            <Link href="/wishlist">
+            <Link href="/wishlist" aria-label={`Wishlist, ${products.length} items`}>
               <div className=" relative ">
                 <SlHeart />
                 <span className={`absolute -top-3 -right-3 bg-red-500 w-5 h-5 text-center text-sm rounded-full text-white ${products[0] ? "block" : "hidden"}`}>{products.length}</span>
               </div>
             </Link>
-            <Link href="/cart" className="cursor-pointer">
+            <Link href="/cart" aria-label={`Cart, ${products.length} items`}>
               <div className=" relative ">
                 <PiShoppingCart />
                 <span className={`absolute -top-3 -right-3 bg-red-500 w-5 h-5 text-center text-sm rounded-full text-white ${items[0] ? "block" : "hidden"}`}>{items.length}</span>
@@ -78,7 +78,10 @@ export default function Header() {
             </Link>
             {isLoggedIn && (
               <div>
-                <button onClick={() => setShowMenu((show) => !show)} className="cursor-pointer relative flex items-center ">
+                <button onClick={() => setShowMenu((show) => !show)} className="cursor-pointer relative flex items-center " aria-label={`Account, ${profile?.first_name && profile?.last_name
+                  ? `${profile.first_name} ${profile.last_name}`
+                  : "User"
+                  }`}>
                   {profile?.avatar_url ? (
                     <Image src={profile.avatar_url} alt="profile image" width={90} height={90} className="rounded-full h-8 w-8" />
                   ) :
@@ -88,23 +91,27 @@ export default function Header() {
                 <div>
                   {showMenu && (
                     <div className=" absolute left-[79%] bg-black text-white p-3 rounded-md flex flex-col gap-2 shadow-xl w-57 text-[17px]">
-                      <Link href="/account" className="flex items-center gap-2 p-2 hover:bg-thread-bg hover:text-black rounded-md">
+                      <Link href="/account" className="flex items-center gap-2 p-2 hover:bg-thread-bg hover:text-black rounded-md" aria-label="Manage My Account">
                         <GoPerson />
                         <span>Manage My Account</span>
                       </Link>
-                      <Link href="/account" className="flex items-center gap-2 p-2 hover:bg-thread-bg hover:text-black rounded-md">
+
+                      <Link href="/account" className="flex items-center gap-2 p-2 hover:bg-thread-bg hover:text-black rounded-md" aria-label="My Order">
                         <RiShoppingBag3Line />
                         <span>My Order</span>
                       </Link>
-                      <Link href="/account" className="flex items-center gap-2 p-2 hover:bg-thread-bg hover:text-black rounded-md">
+
+                      <Link href="/account" className="flex items-center gap-2 p-2 hover:bg-thread-bg hover:text-black rounded-md" aria-label="Cancellations">
                         <FaRegCircleXmark />
                         <span>Cancellations</span>
                       </Link>
-                      <Link href="/account" className="flex items-center gap-2 p-2 hover:bg-thread-bg hover:text-black rounded-md">
+
+                      <Link href="/account" className="flex items-center gap-2 p-2 hover:bg-thread-bg hover:text-black rounded-md" aria-label="Reviews">
                         <FaRegStar />
                         <span>Reviews</span>
                       </Link>
-                      <button onClick={handleLogout} className="flex items-center text-red-500 gap-2 p-2 bg-thread-bg rounded-md cursor-pointer">
+
+                      <button onClick={handleLogout} className="flex items-center text-red-500 gap-2 p-2 bg-thread-bg rounded-md cursor-pointer" aria-label="Logout">
                         <CiLogout className="text-[25px]" />
                         <span>Logout</span>
                       </button>
@@ -115,7 +122,7 @@ export default function Header() {
             )}
           </div>
         </div>
-        <button onClick={() => setShowMenu((show) => !show)} className="block lg:hidden cursor-pointer">
+        <button onClick={() => setShowMenu((show) => !show)} className="block lg:hidden cursor-pointer" aria-label="Open menu">
           <RiMenuFill className="text-3xl" />
         </button>
       </nav>
@@ -145,14 +152,14 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-8 text-xl text-black ">
-            <Link href="/wishlist" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
-              <div className=" relative ">
+            <Link href="/wishlist" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]" aria-label={`Wishlist, ${products.length} items`}>
+              <div className="relative">
                 <SlHeart />
                 <span className={`absolute -top-3 -right-3 bg-red-500 w-5 h-5 text-center text-sm rounded-full text-white ${products[0] ? "block" : "hidden"}`}>{products.length}</span>
               </div>
             </Link>
 
-            <Link href="/cart" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]">
+            <Link href="/cart" className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5]" aria-label={`Cart, ${products.length} items`}>
               <div className=" relative ">
                 <PiShoppingCart />
                 <span className={`absolute -top-3 -right-3 bg-red-500 w-5 h-5 text-center text-sm rounded-full text-white ${items[0] ? "block" : "hidden"}`}>{items.length}</span>
@@ -161,7 +168,10 @@ export default function Header() {
 
             {isLoggedIn && (
               <div className="flex items-center gap-4 text-xl -ml-3">
-                <Link href="/account" className={`${profile?.avatar_url ? "" : "bg-thread-bg p-2"} rounded-full shadow-[0_0px_20px_#f5f5f5]`}>
+                <Link href="/account" className={`${profile?.avatar_url ? "" : "bg-thread-bg p-2"} rounded-full shadow-[0_0px_20px_#f5f5f5]`} aria-label={`Account, ${profile?.first_name && profile?.last_name
+                  ? `${profile.first_name} ${profile.last_name}`
+                  : "User"
+                  }`}>
                   {profile?.avatar_url ? (
                     <Image src={profile.avatar_url} alt="profile image" width={90} height={90} className="rounded-full h-8 w-8" />
                   ) :
@@ -169,7 +179,7 @@ export default function Header() {
                   }
                 </Link>
 
-                <button onClick={handleLogout} className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5] text-red-500 cursor-pointer">
+                <button onClick={handleLogout} className="bg-thread-bg p-2 rounded-full shadow-[0_0px_20px_#f5f5f5] text-red-500 cursor-pointer" aria-label="Logout">
                   <CiLogout />
                 </button>
               </div>

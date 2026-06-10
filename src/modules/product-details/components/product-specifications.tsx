@@ -23,6 +23,7 @@ export default function ProductSpecifications({ product }: { product: Product })
       {Colors.map((color) => (
         <button
           key={color.id}
+          aria-label={color.className}
           className={`w-6 h-6 rounded-full cursor-pointer ${color.className}`}
         />
       ))}

@@ -18,11 +18,11 @@ export default function Address() {
             <p className="text-sm text-gray-500 block">Phone: {profile?.phone_number || "No phone number saved"}</p>
           </div>
         </div>
-        <Link href={"/account"}><MdModeEditOutline className="text-xl" /></Link>
+        <Link href={"/account"} aria-label="Edit account"><MdModeEditOutline className="text-xl" /></Link>
       </div>
 
       <div>
-        <Link href="/account" className="flex items-center gap-2 text-black my-4 relative">
+        <Link href="/account" className="flex items-center gap-2 text-black my-4 relative" aria-label="Go to account settings">
           <span className="flex-1 h-px bg-linear-to-l from-black to-white"></span>
           <IoIosAddCircle className="text-2xl" />
           <span className="flex-1 h-px bg-linear-to-r from-black to-white"></span>

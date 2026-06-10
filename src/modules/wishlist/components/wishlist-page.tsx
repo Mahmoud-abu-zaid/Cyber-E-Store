@@ -27,10 +27,12 @@ export default function WishlistPage() {
       {items.map((item) => (
         <div key={item.id} className="border-b sm:p-4 p-2 my-2 rounded-md flex sm:flex-row flex-col w-full items-center sm:gap-4 sm:justify-between">
           <div className="flex flex-row items-center">
-            <button onClick={() => removeFromWishlist(item.id)} className="text-2xl cursor-pointer text-end hidden sm:flex"><HiOutlineXMark /></button>
+            <button onClick={() => removeFromWishlist(item.id)} className="text-2xl cursor-pointer text-end hidden sm:flex" aria-label={`Remove ${item.product?.title} from wishlist`}>
+              <HiOutlineXMark />
+            </button>
             <Image src={item.product?.thumbnail ?? ""} alt={item.product?.title ?? ""} width={116} height={96} className="sm:w-24 sm:h-24 h-35 w-40 rounded-md" />
             <div className="flex flex-col items-start gap-2 sm:gap-0 ">
-              <h4 className="sm:text-xl sm:w-50 w-25">{item.product?.title}</h4>
+              <h2 className="sm:text-xl sm:w-50 w-25">{item.product?.title}</h2>
               <p>{item.product?.brand}</p>
               <p>{item.product?.tags[0]}</p>
               <p className="sm:hidden ">$ {item.product?.price}</p>

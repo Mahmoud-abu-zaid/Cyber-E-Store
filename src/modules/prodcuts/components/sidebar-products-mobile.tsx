@@ -20,6 +20,7 @@ export default function SidebarProductsMobile({ onClose }: { onClose: () => void
     <div className="space-y-4">
       <div className="flex items-center gap-3">
         <button className="text-2xl cursor-pointer"
+          aria-label="Back"
           onClick={() => {
             resetDraftFilters();
             applyDraftFilters();

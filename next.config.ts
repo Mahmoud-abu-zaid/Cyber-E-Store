@@ -1,7 +1,4 @@
 const nextConfig = {
-  experimental: {
-    browsersListForSwc: true,
-  },
   images: {
     remotePatterns: [
       {

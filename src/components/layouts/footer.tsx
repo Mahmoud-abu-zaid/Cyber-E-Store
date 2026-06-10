@@ -38,7 +38,7 @@ export default function Footer() {
           <div className="flex gap-9 pt-6">
             {mediaLinks.map((links, index) => (
               <div key={index} className="text-lg">
-                <Link href={links.href} className="text-white">
+                <Link href={links.href} className="text-white" aria-label={links.href}>
                   {links.icon}
                 </Link>
               </div>
@@ -46,7 +46,7 @@ export default function Footer() {
           </div>
         </div>
         <div>
-          <h4 className="text-md font-semibold">Services</h4>
+          <h2 className="text-md font-semibold">Services</h2>
           <ul>
             {servicesLinks.map((links) => (
               <li key={links.name} className="py-2">
@@ -58,7 +58,7 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h4 className="text-md font-semibold">Assistance to the buyer</h4>
+          <h2 className="text-md font-semibold">Assistance to the buyer</h2>
           <ul>
             {assistantLinks.map((links) => (
               <li key={links.name} className="py-2">
